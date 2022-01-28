@@ -8,34 +8,34 @@ PROJ_NAME=CIPS-3D
 
 run_num=${1:-0}
 bucket=${2:-bucket-3690}
-#cuda_devices=${3:-0,1,2,3,4,5,6,7}
-cuda_devices=`python -c "import torch;print(','.join([str(i) for i in range(torch.cuda.device_count())]), end='')"`
+cuda_devices=${3:-0,1,2,3,4,5,6,7}
+# cuda_devices=`python -c "import torch;print(','.join([str(i) for i in range(torch.cuda.device_count())]), end='')"`
 
 
 #curdir: /home/ma-user/modelarts/user-job-dir
-pwd && ls -la
+# pwd && ls -la
 
-proj_root=$PROJ_NAME
+# proj_root=$PROJ_NAME
 
-############ copy code
-cd $proj_root
+# ############ copy code
+# cd $proj_root
 
-## modelarts code
-# copy tool
-pip install tl2
+# ## modelarts code
+# # copy tool
+# pip install tl2
 
-python -m tl2.modelarts.scripts.copy_tool \
-  -s s3://$bucket/ZhouPeng/codes/$proj_root \
-  -d ../$proj_root \
-  -t copytree -b ../$proj_root/code.zip
-## cache code
-python -m tl2.modelarts.scripts.copy_tool \
-  -s s3://$bucket/ZhouPeng/codes/$proj_root \
-  -d /cache/$proj_root \
-  -t copytree -b /cache/$proj_root/code.zip
+# python -m tl2.modelarts.scripts.copy_tool \
+#   -s s3://$bucket/ZhouPeng/codes/$proj_root \
+#   -d ../$proj_root \
+#   -t copytree -b ../$proj_root/code.zip
+# ## cache code
+# python -m tl2.modelarts.scripts.copy_tool \
+#   -s s3://$bucket/ZhouPeng/codes/$proj_root \
+#   -d /cache/$proj_root \
+#   -t copytree -b /cache/$proj_root/code.zip
 
-cd /cache/$proj_root
-pwd
+# cd /cache/$proj_root
+# pwd
 
 ############ copy results
 #resume_dir=encoder_inr_train/train_ffhq_r256_softplus-20211219_144749_467
@@ -49,7 +49,7 @@ pwd
 #  -d /cache/$proj_root/results/$finetune_pkl -t copy
 
 ############ Prepare envs
-bash exp/tests/setup_env.sh
+# bash exp/tests/setup_env.sh
 #pip uninstall -y tl2
 
 export ANSI_COLORS_DISABLED=1

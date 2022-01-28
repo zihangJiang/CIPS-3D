@@ -2,7 +2,7 @@ root_obs: &root_obs s3://bucket-3690/ZhouPeng
 modelarts_download: &modelarts_download
   ffhq256:
     datapath_obs: '{global_cfg.root_obs}/keras/ffhq/downsample_ffhq_256x256.zip'
-    datapath: "datasets/ffhq/downsample_ffhq_256x256.zip"
+    datapath: "datasets/ffhq/ffhq256x256.zip"
     overwrite: false
     eval: true
     unzip: true
@@ -22,7 +22,7 @@ modelarts_download: &modelarts_download
 
 obs_ffhq_r256: &obs_ffhq_r256
   datapath_obs: 'keras/ffhq/downsample_ffhq_256x256.zip'
-  datapath: "datasets/ffhq/downsample_ffhq_256x256.zip"
+  datapath: "datasets/ffhq/ffhq256x256.zip"
   disable: false
   overwrite: false
   unzip: false
@@ -99,7 +99,7 @@ dataset_ffhq_r256: &dataset_ffhq_r256
   register_modules:
     - "tl2.proj.pytorch.examples.dataset_stylegan3.dataset"
   name: "ImageFolderDataset_of_stylegan"
-  path: 'datasets/ffhq/downsample_ffhq_256x256.zip'
+  path: 'datasets/ffhq/ffhq256x256.zip'
   use_labels: False
   max_size: null
 #  max_size: 100
